@@ -1,0 +1,21 @@
+{
+  "name": "atlas",
+  "version": "0.1.0",
+  "author": "Sasha Koss <kossnocorp@gmail.com>",
+  "description": "Atlas is micro JavaScript framework which can be scaled to Backbone.js on demand",
+
+  "devDependencies": {
+    "coffee-script": "",
+    "mocha":         "",
+    "chai":          "",
+    "sinon":         "",
+    "sinon-chai":    "",
+    "uglify-js":     ""
+  },
+
+  "license": "MIT",
+
+  "engine": {
+    "node": ">=0.4"
+  }
+}
