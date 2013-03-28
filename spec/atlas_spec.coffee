@@ -17,6 +17,11 @@ Atlas = window.Atlas
 
 describe 'Atlas', ->
 
+  DUMMY_HTML = '<div id="div"><div></div></div> <div id="div2"></div>'
+
+  beforeEach ->
+    $('body').empty()
+
   describe '#initialize()', ->
 
     View          = null
@@ -64,26 +69,113 @@ describe 'Atlas', ->
 
   describe '#$el', ->
 
-    it 'assigns jQuery object from #el'
+    it 'assigns jQuery object from #el', ->
+      class View extends Atlas.View
+        el: 'body'
+      view = new View()
+      view.$el.should.be.instanceOf $
+      view.$el[0].should.be.eq $('body')[0]
 
   describe '#$()', ->
 
-    it 'performs scoped selector'
-
-  describe '#remove()', ->
-
-    it 'removes el from DOM'
-
-    it 'runs undelegateEvents'
+    it 'performs scoped selector', ->
+      $('body').html(DUMMY_HTML)
+      class View extends Atlas.View
+        el: '#div'
+      view = new View()
+      view.$('div').length.should.be.eq 1
 
   describe '#delegateEvents()', ->
 
-    it 'delegates events from passed map'
+    it 'binds events to el for rules with only event name', ->
+      clickSpy = sinon.spy()
+      $('body').html(DUMMY_HTML)
+      class View extends Atlas.View
+        el:   '#div'
+        click: clickSpy
+      view = new View()
+      view.delegateEvents(click: 'click')
+      $('#div').click()
+      clickSpy.should.be.calledOnce
 
-    it 'delegates evenets from #events'
+    it 'delegates events from passed map', ->
+      viewClickStub = sinon.stub().returns(false)
+      divClickStub  = sinon.stub().returns(false)
+      $('body').html(DUMMY_HTML)
+      class View extends Atlas.View
+        el:        '#div'
+        viewClick: viewClickStub
+        divClick:  divClickStub
+      view = new View()
+      view.delegateEvents('click div': 'divClick', click: 'viewClick')
+      $('#div').click()
+      $('#div div').click()
+      viewClickStub.should.be.calledOnce
+      divClickStub.should.be.calledOnce
 
-    it 'binds events for rules with only event name'
+    it 'delegates events from #events', ->
+      viewClickStub = sinon.stub().returns(false)
+      divClickStub  = sinon.stub().returns(false)
+      $('body').html(DUMMY_HTML)
+      class View extends Atlas.View
+        el: '#div'
+        events:
+          click:       'viewClick'
+          'click div': 'divClick'
+        viewClick: viewClickStub
+        divClick:  divClickStub
+      view = new View()
+      $('#div').click()
+      $('#div div').click()
+      viewClickStub.should.be.calledOnce
+      divClickStub.should.be.calledOnce
 
   describe '#undelegateEvents()', ->
 
-    it 'removes all delegated callbacks'
+    it 'removes all binded callbacks', ->
+      clickSpy = sinon.spy()
+      $('body').html(DUMMY_HTML)
+      class View extends Atlas.View
+        el:   '#div'
+        click: clickSpy
+      view = new View()
+      view.delegateEvents(click: 'click')
+      view.undelegateEvents()
+      $('#div').click()
+      clickSpy.should.not.be.called
+
+    it 'removes all delegated callbacks', ->
+      clickSpy = sinon.spy()
+      $('body').html(DUMMY_HTML)
+      class View extends Atlas.View
+        el:   '#div'
+        click: clickSpy
+      view = new View()
+      view.delegateEvents(click: 'click')
+      view.undelegateEvents()
+      $('#div').click()
+      clickSpy.should.not.be.called
+
+    it 'keep other callbacks binded', ->
+      clickSpy = sinon.spy()
+      $('body').html(DUMMY_HTML)
+      class View extends Atlas.View
+        el:   '#div'
+        click: clickSpy
+      view = new View()
+      view.delegateEvents(click: 'click')
+      view.undelegateEvents()
+      $('#div').click()
+      clickSpy.should.not.be.called
+
+  describe '#remove()', ->
+
+    it 'removes el from DOM', ->
+      $('body').html(DUMMY_HTML)
+      class View extends Atlas.View
+        el: '#div'
+      view = new View()
+      view.remove()
+      $('#div').length.should.be.eq 0
+
+    it 'runs undelegateEvents', ->
