@@ -5,6 +5,7 @@ Atlas = {}
 class Atlas.View
 
   constructor: (@options = {}) ->
+    @el = $(@options.el || @el)[0]
     @initialize?(@options)
 
 if window?

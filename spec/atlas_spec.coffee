@@ -41,11 +41,26 @@ describe 'Atlas', ->
 
   describe '#el', ->
 
-    it 'assigns DOM node from string'
+    it 'assigns DOM node from string', ->
+      class View extends Atlas.View
+        el: 'body'
+      view = new View()
+      view.el.should.be.eq $('body')[0]
 
-    it 'assigns from options'
+    describe 'assign it from options', ->
 
-    it 'will not assign if options.el is not DOM node'
+      View = null
+
+      beforeEach ->
+        View = class extends Atlas.View
+
+      it 'assigns from options', ->
+        view = new View(el: $('body')[0])
+        view.el.should.be.eq $('body')[0]
+
+      it 'assigns jQuery object from options', ->
+        view = new View(el: $('body'))
+        view.el.should.be.eq $('body')[0]
 
   describe '#$el', ->
 
