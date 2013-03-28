@@ -102,6 +102,8 @@ class SearchView extends Atlas.View
 
 #### delegateEvents
 
+Delegate events specified in format `{ 'event selector': 'callback' }`. You specify only event name (without selector) event will be binded to `el`.
+
 ``` coffeescript
 class SearchView extends Atlas.View
 
@@ -109,6 +111,8 @@ class SearchView extends Atlas.View
     submit:         'doSearch'
     'click #clear': 'clearQuery'
 ```
+
+You can manually call `#delegateEvents()` and pass events map as argument:
 
 ``` coffeescript
 class SearchView extends Atlas.View
