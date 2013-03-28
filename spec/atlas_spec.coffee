@@ -10,9 +10,25 @@ describe 'Atlas', ->
 
   describe '#initialize()', ->
 
-    it 'runs on instance create'
+    View          = null
+    initializeSpy = null
 
-    it 'accept options object'
+    beforeEach ->
+      View = class extends Atlas.View
+        initialize: ->
+      initializeSpy = sinon.spy(View::, 'initialize')
+
+    it 'runs on instance create', ->
+      new View()
+      initializeSpy.should.be.calledOnce
+
+    it 'accept options object', ->
+      new View(itWorks: true)
+      initializeSpy.should.be.calledWithMatch(sinon.match.has('itWorks', true))
+
+    it 'stores options to @options', ->
+      view = new View(itWorks: true)
+      view.options.itWorks.should.be.true
 
   describe '#el', ->
 
