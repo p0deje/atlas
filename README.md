@@ -4,6 +4,10 @@
 
 Atlas.js useful for mini applications like landings, home pages, CV's and so on.
 
+Initially sponsored by [Toptal](http://toptal.com/).
+
+This project is a member of the [OSS Manifesto](http://ossmanifesto.org/).
+
 ## What is Atlas.js?
 
 * Is a micro JavaScript library;
@@ -33,6 +37,10 @@ class SearchView extends Atlas.View
 
 #### el
 
+Every view has `el` property. It's a DOM representation of view.
+
+You can specify `el` in prototype (it's actually regular jQuery selector):
+
 ``` coffeescript
 class SearchView extends Atlas.View
 
@@ -41,6 +49,8 @@ class SearchView extends Atlas.View
   initialize: ->
     @el #=> [<body>...</body>]
 ```
+
+Or pass `el` as option (you can pass jQuery or DOM object):
 
 ``` coffeescript
 class SearchView extends Atlas.View
@@ -53,6 +63,8 @@ new SearchView(el: $('body'))
 
 #### $el
 
+`$el` it's a jQuery object for `el`.
+
 ``` coffeescript
 class SearchView extends Atlas.View
 
@@ -64,6 +76,8 @@ class SearchView extends Atlas.View
 
 #### $
 
+Perform scoped (to current `el`) selector.
+
 ``` coffeescript
 class SearchView extends Atlas.View
 
@@ -74,6 +88,8 @@ class SearchView extends Atlas.View
 ```
 
 #### remove
+
+Removes `el` from DOM.
 
 ``` coffeescript
 class SearchView extends Atlas.View
