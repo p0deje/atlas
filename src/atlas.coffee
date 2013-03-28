@@ -1,3 +1,5 @@
+$ = window.jQuery or require?('jquery')
+
 Atlas = {}
 
 class Atlas.View

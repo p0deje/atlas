@@ -1,10 +1,19 @@
-Atlas     = require('../src/atlas.coffee')
+jsdom = require('jsdom').jsdom
+
+global.document = jsdom()
+global.window   = document.createWindow()
+
+require('../src/atlas.coffee')
+
 chai      = require('chai')
 sinon     = require('sinon')
 sinonChai = require('sinon-chai')
+$         = require('jquery')
 
 chai.should()
 chai.use(sinonChai)
+
+Atlas = window.Atlas
 
 describe 'Atlas', ->
 

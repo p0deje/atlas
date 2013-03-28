@@ -10,7 +10,9 @@
     "chai":          "",
     "sinon":         "",
     "sinon-chai":    "",
-    "uglify-js":     ""
+    "uglify-js":     "",
+    "jquery":        "",
+    "jsdom":         ""
   },
 
   "license": "MIT",
