@@ -1,6 +1,8 @@
 # Atlas.js - micro Backbone.js optimized for size
 
-Atlas.js useful for mini applications like landing, home pages, CV's etc.
+[![Build Status](https://secure.travis-ci.org/kossnocorp/atlas.png?branch=master)](http://travis-ci.org/kossnocorp/atlas)
+
+Atlas.js useful for mini applications like landings, home pages, CV's and so on.
 
 ## What is Atlas.js?
 
