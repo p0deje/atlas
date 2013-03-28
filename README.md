@@ -15,7 +15,7 @@ This project is a member of the [OSS Manifesto](http://ossmanifesto.org/).
 * has limited Backbone.View-compatible API;
 * can be easily scaled to Backbone.js on demand;
 * has detailed test suite & clean CoffeeScript code;
-* avaliable to download in `.js` and `.min.js`.
+* avaliable to download as [atlas.js](https://raw.github.com/kossnocorp/atlas/v0.1.0/lib/atlas.js) and [atlas.min.js](https://raw.github.com/kossnocorp/atlas/v0.1.0/lib/atlas.min.js).
 
 ## Upgrade to Backbone.js
 
