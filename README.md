@@ -35,7 +35,7 @@ class SearchView extends Atlas.View
   initialize: (options) ->
 ```
 
-#### el
+#### #el
 
 Every view has `el` property. It's a DOM representation of view.
 
@@ -61,7 +61,7 @@ class SearchView extends Atlas.View
 new SearchView(el: $('body'))
 ```
 
-#### $el
+#### #$el
 
 `$el` it's a jQuery object for `el`.
 
@@ -74,7 +74,7 @@ class SearchView extends Atlas.View
     @$el #=> $('body')
 ```
 
-#### $
+#### #$()
 
 Perform scoped (to current `el`) selector.
 
@@ -87,7 +87,7 @@ class SearchView extends Atlas.View
     @$('div') #=> $('div', @$el)
 ```
 
-#### remove
+#### #remove()
 
 Removes `el` from DOM.
 
@@ -100,7 +100,7 @@ class SearchView extends Atlas.View
     @remove()
 ```
 
-#### delegateEvents
+#### #delegateEvents()
 
 Delegate events specified in format `{ 'event selector': 'callback' }`. You specify only event name (without selector) event will be binded to `el`.
 
@@ -121,9 +121,13 @@ class SearchView extends Atlas.View
     @delegateEvents(submit: 'doSearch')
 ```
 
-#### undelegateEvents
+#### #undelegateEvents()
 
 Removes all of the view's delegated events.
+
+## Roadmap
+
+See [milestones](https://github.com/kossnocorp/atlas/issues/milestones).
 
 ## Changelog
 
