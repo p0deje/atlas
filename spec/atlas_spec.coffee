@@ -178,4 +178,9 @@ describe 'Atlas', ->
       view.remove()
       $('#div').length.should.be.eq 0
 
-    it 'runs undelegateEvents', ->
+  describe '#cid', ->
+
+    it 'unique for every view', ->
+      view1 = new Atlas.View()
+      view2 = new Atlas.View()
+      view1.cid.should.not.be.eq view2.cid

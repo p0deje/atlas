@@ -9,7 +9,7 @@ class Atlas.View
   DELEGATE_SPLITTER = /^(\S+)\s*(.*)$/
 
   constructor: (@options = {}) ->
-    @cid = Atlas.View.counter
+    @cid = 'view' + Atlas.View.counter
     Atlas.View.counter += 1
 
     @el  = $(@options.el || @el)[0]
@@ -29,7 +29,7 @@ class Atlas.View
     for eventRule, callbackName of map
       [__, jQueryEvent, selector] = eventRule.split(DELEGATE_SPLITTER)
 
-      event = jQueryEvent + '.' + @_delegateId()
+      event = jQueryEvent + '.' + @cid
 
       if selector == ''
         @$el.bind(event, @[callbackName])
@@ -38,11 +38,8 @@ class Atlas.View
 
   undelegateEvents: ->
     @$el
-      .undelegate('.' + @_delegateId())
-      .unbind('.' + @_delegateId())
-
-  _delegateId: ->
-    'view_' + @cid
+      .undelegate('.' + @cid)
+      .unbind('.' + @cid)
 
 if window?
   window.Atlas = Atlas
