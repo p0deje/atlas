@@ -10,7 +10,7 @@ This project is a member of the [OSS Manifesto](http://ossmanifesto.org/).
 
 ## What is Atlas.js?
 
-* Is a micro JavaScript library;
+* is a micro JavaScript library;
 * lightweight (0.45kb when compressend and gzipped);
 * has limited Backbone.View-compatible API;
 * can be easily scaled to Backbone.js on demand;
@@ -27,7 +27,7 @@ Just replace `Atlas.View` with `Backbone.View` and continue having fun with exte
 
 #### #initialize()
 
-When you are create new instance of Atlas.View `#initialize()` will be called with passed options. Options also can be accessed later via `@options`. Inside of `#initialize()` you can access `@el` and `@$el`. Events from `#events` also delegates before `#initialize()` call.
+When you are create new instance of Atlas.View `#initialize()` will be called with passed options. Options can also be accessed later via `@options`. Inside of `#initialize()` you can access `@el` and `@$el`. Events from `#events` are also delegated before `#initialize()` is called.
 
 ``` coffeescript
 class SearchView extends Atlas.View
@@ -63,7 +63,7 @@ new SearchView(el: $('body'))
 
 #### #$el
 
-`$el` it's a jQuery object for `el`.
+`$el` is a jQuery object for `el`.
 
 ``` coffeescript
 class SearchView extends Atlas.View
@@ -76,7 +76,7 @@ class SearchView extends Atlas.View
 
 #### #$()
 
-Perform scoped (to current `el`) selector.
+Performs scoped (to current `el`) selector.
 
 ``` coffeescript
 class SearchView extends Atlas.View
@@ -102,7 +102,7 @@ class SearchView extends Atlas.View
 
 #### #delegateEvents()
 
-Delegate events specified in format `{ 'event selector': 'callback' }`. You specify only event name (without selector) event will be binded to `el`.
+Delegates events specified in format `{ 'event selector': 'callback' }`. You specify only event name (without selector), so event will be binded to `el`.
 
 ``` coffeescript
 class SearchView extends Atlas.View
@@ -123,7 +123,7 @@ class SearchView extends Atlas.View
 
 #### #undelegateEvents()
 
-Removes all of the view's delegated events.
+Removes all delegated events of the view.
 
 ## Roadmap
 
